@@ -293,7 +293,7 @@ int ReadNumbersOfEdges(int n)
         cin >> m;
         if (n <= 0)
             cout << "Numarul de muchii introdus nu este valida!\n";
-    } while (m <= 0 );
+    } while (m <= 0);
     return m;
 }
 
@@ -310,7 +310,7 @@ int ReadNumbersOfVertices()
     return n;
 }
 
-vector<vector<int>> ReadGraphIncMatrix(vector<int> vertices)
+vector<vector<int>> ReadGraphIncMatrix()
 {
     int n = ReadNumbersOfVertices();
     cout << "Introduceti numarul de arcuri: ";
@@ -318,50 +318,57 @@ vector<vector<int>> ReadGraphIncMatrix(vector<int> vertices)
     vector<vector<int>>
         incMat(m, vector<int>(n));
 
-    cout << "Introduceti arcurile:\n";
+    cout << "Completati matricea de incidenta:\n";
     for (int i = 0; i < m; i++)
     {
-        pair<int, int> edge = ReadEdge(n, vertices);
-        incMat[i][edge.first - 1] = -1;
-        incMat[i][edge.second - 1] = 1;
-        // adjMat[v - 1][u - 1] = 1;
+        for (int j = 0; j < n; j++)
+        {
+            cout << "u" << i + 1 << " - x" << j + 1 << " : ";
+            cin >> incMat[i][j];
+        }
     }
     cout << "Graful a fost citit cu succes!\n";
     return incMat;
 }
 
-vector<vector<int>> ReadGraphAdjMatrix(vector<int> vertices)
+vector<vector<int>> ReadGraphAdjMatrix()
 {
     int n = ReadNumbersOfVertices();
-    cout << "Introduceti numarul de arcuri: ";
-    int m = ReadNumbersOfEdges(n);
 
     vector<vector<int>> adjMat(n, vector<int>(n));
 
-    cout << "Introduceti arcurile:\n";
-    for (int i = 0; i < m; i++)
+    cout << "Completati matricea de adiacenta:\n";
+    for (int i = 0; i < n; i++)
     {
-        pair<int, int> edge = ReadEdge(n, vertices);
-        adjMat[edge.first - 1][edge.second - 1] = 1;
-        // adjMat[v - 1][u - 1] = 1;
+        for (int j = 0; j < n; j++)
+        {
+            cout << "x" << i + 1 << " - x" << j + 1 << " : ";
+            cin >> adjMat[i][j];
+        }
     }
     cout << "Graful a fost citit cu succes!\n";
     return adjMat;
 }
 
-vector<vector<int>> ReadGraphAdjList(vector<int> vertices)
+vector<vector<int>> ReadGraphAdjList()
 {
     int n = ReadNumbersOfVertices();
-    cout << "Introduceti numarul de arcuri: ";
-    int m = ReadNumbersOfEdges(n);
+    vector<vector<int>> adjList;
 
-    vector<vector<int>> adjList(n);
-
-    cout << "Introduceti arcurile:\n";
-    for (int i = 0; i < m; i++)
+    cout << "Introduceti lista de adiacenta:\n";
+    for (int i = 0; i < n; i++)
     {
-        pair<int, int> edge = ReadEdge(n, vertices);
-        adjList[edge.first - 1].push_back(edge.second);
+        cout << i + 1 << " | ";
+        vector<int> temp;
+        int v;
+        for (;;)
+        {
+            cin >> v;
+            if (v == 0)
+                break;
+            temp.push_back(v);
+        }
+        adjList.push_back(temp);
     }
     cout << "Graful a fost citit cu succes!\n";
     return adjList;

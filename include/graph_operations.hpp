@@ -6,9 +6,9 @@
 #include <algorithm>
 using namespace std;
 
-vector<vector<int>> ReadGraphIncMatrix(vector<int> vertices);
-vector<vector<int>> ReadGraphAdjMatrix(vector<int> vertices);
-vector<vector<int>> ReadGraphAdjList(vector<int> vertices);
+vector<vector<int>> ReadGraphIncMatrix();
+vector<vector<int>> ReadGraphAdjMatrix();
+vector<vector<int>> ReadGraphAdjList();
 pair<int, int> ReadEdge(int n, vector<int> vertices);
 int ReadNumbersOfVertices();
 int ReadNumbersOfEdges(int n);

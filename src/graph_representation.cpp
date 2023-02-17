@@ -17,7 +17,7 @@ int main()
         {
         case 1:
             system("clear");
-            graph = ReadGraphIncMatrix(vertices);
+            graph = ReadGraphIncMatrix();
             graphForm = 1;
             vertices = vector<int>(graph[0].size());
             vertices = ReadVerteces(vertices);
@@ -26,7 +26,7 @@ int main()
             break;
         case 2:
             system("clear");
-            graph = ReadGraphAdjMatrix(vertices);
+            graph = ReadGraphAdjMatrix();
             graphForm = 2;
             vertices = vector<int>(graph.size());
             vertices = ReadVerteces(vertices);
@@ -35,7 +35,7 @@ int main()
             break;
         case 3:
             system("clear");
-            graph = ReadGraphAdjList(vertices);
+            graph = ReadGraphAdjList();
             graphForm = 3;
             vertices = vector<int>(graph.size());
             vertices = ReadVerteces(vertices);
